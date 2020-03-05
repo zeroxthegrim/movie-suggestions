@@ -99,4 +99,3 @@ const getRandomMovie = async (discoverReq) => {
     // returning random movie
     return flattenArr[Math.floor(Math.random() * flattenArr.length)];
 };
-
