@@ -1,14 +1,11 @@
 const apiKey = "f0f47a8d3cd3b331a223452679fbd344";
 
 
-let discoverReq = `https://api.themoviedb.org/3/discover/movie?api_key=f0f47a8d3cd3b331a223452679fbd344&language=en-US&sort_by=popularity.desc`;
+let discoverReq = `https://api.themoviedb.org/3/discover/movie?api_key=f0f47a8d3cd3b331a223452679fbd344&language=en-US?with_genres=27&primary_release_date.gte=1990-01-01&primary_release_date.lte=1999-12-31&sort_by=popularity.desc`;
 
 
 const interstellar = 157336;
 const interstellarPosterPath = "/nBNZadXqJSdt05SHLqgT0HuC5Gm.jpg";
-
-// /discover/movie?sort_by=popularity.desc
-
 
 const getDirectors = async (crew) => {
     let directors = [];
@@ -49,8 +46,12 @@ const getActors = async (cast) => {
 };
 
 const getPoster = async (posterUrl) => {
-    const baseUrl = "https://image.tmdb.org/t/p/w500";
+    const baseUrl = "https://image.tmdb.org/t/p/w342";
 
+    if (posterUrl == null) {
+        return null;
+    }
+    
     const response = await fetch(baseUrl + posterUrl);
     return response.url;
 };
@@ -72,7 +73,7 @@ const getRandomMovie = async (discoverReq) => {
     let movieArr = [];
     let flattenArr = [];
 
-    // this will limit max number of pages that we will request to 20
+    // this will limit max number of pages that we will request to 15
     let pagesToReq = 15;
     if (pagesToReq > firstData.total_pages) {
         pagesToReq = firstData.total_pages;
@@ -96,6 +97,9 @@ const getRandomMovie = async (discoverReq) => {
         }
     }
 
+    console.log(flattenArr);
+    console.log(flattenArr[Math.floor(Math.random() * flattenArr.length)]);
     // returning random movie
     return flattenArr[Math.floor(Math.random() * flattenArr.length)];
 };
+
