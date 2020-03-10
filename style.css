@@ -13,11 +13,15 @@ body {
 
 .container {
     text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
+    max-width: 900px;
+    margin: 30px auto;
     background-color: black;
     border-radius: 5px;
-    padding-bottom: 20px;
+    
+}
+
+.extra-bottom-padding {
+    padding-bottom: 40px;
 }
 
 .header {
@@ -111,9 +115,9 @@ select option {
 .score-and-genres {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    
     align-items: center;
-    max-width: 450px;
+    
     margin: 15px auto;
     padding: 0 15px;
     
@@ -123,9 +127,23 @@ select option {
     max-width: 250px;
     font-style: italic;
     text-align: start;
+    padding-left: 50px;
 }
 
+.info-2 {
+    display: flex;
+}
 
+.poster {
+    padding-left: 20px;
+}
+
+.right-column {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    
+}
 
 .overview {
     padding: 10px 20px;
@@ -136,6 +154,14 @@ select option {
 
 .blue-border {
     margin: 10px auto; 
+    width: 94%;
+    height: 1px;
+    border-bottom: #0563af solid 2px;
+}
+
+.blue-border-2 {
+    margin: 0 auto;
+    margin-bottom: 10px;
     width: 94%;
     height: 1px;
     border-bottom: #0563af solid 2px;
@@ -155,15 +181,50 @@ select option {
     font-weight: bold;
 }
 
+.runtime-div span:first-child, .budget-div span:first-child {
+    font-weight: bold;
+}
+
+.runtime-div {
+    text-align: start;
+    padding: 10px 20px;
+}
+
+.release-date-div, .budget-div {
+    text-align: start;
+    padding: 10px 20px;
+    
+}
+
+.release-date-div span:first-child {
+    font-weight: bold;
+}
+
 .no-display {
     display: none;
 }
 
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:540px) {
     .submit-btn button {
         font-size: 10px;
         width: 100%;
         padding: 10px 8px;
+    }
+
+    .info-2 {
+        flex-direction: column;
+    }
+
+    .container {
+        margin: 0;
+    }
+
+    .poster {
+        padding-left: 0;
+    }
+
+    .directors-div {
+        padding-top: 20px;
     }
 }
