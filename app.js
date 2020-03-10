@@ -12,6 +12,10 @@ const genresSection = document.querySelector(".genres")
 const submitBtn = document.querySelector(".submit-btn button");
 const infoDiv = document.querySelector(".info");
 const placeholderImgSrc = "img/no-poster.png";
+const runtime = document.querySelector(".runtime");
+const releaseDate = document.querySelector(".release-date");
+const budget = document.querySelector(".budget");
+const container = document.querySelector(".container");
 
 const genreCodes = {
     28: "Action",
@@ -148,10 +152,22 @@ const updateUI = (info) => {
         <p>${movieDetails.overview}</p>
     `;
     
+
+    runtime.textContent = ` ${movieDetails.runtime} minutes`;
+    releaseDate.textContent = ` ${movieDetails.release_date}`;
+
+    if (movieDetails.budget == 0) {
+        budget.textContent = ` N/A`;
+    } else {
+        budget.textContent = ` $${(movieDetails.budget).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,')}`;
+    }
+    
     
     updateGenres(movieDetails.genres);
     userScoreUpdate(movieDetails.vote_average);
 
+
+    container.classList.add("extra-bottom-padding");
     submitBtn.textContent = "Suggest Me a Movie";
     submitBtn.classList.toggle("no-click");
 
